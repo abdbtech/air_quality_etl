@@ -2,6 +2,9 @@
 Creating modern ETL pipeline for disparate air quality data streams for future analysis
 
 to do
+create db
+replicate db
+
 download from s3
 create API maintenance download 
 automate with airflow

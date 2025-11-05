@@ -1,5 +1,8 @@
 ## Overview
-Creating modern ETL pipeline for disparate air quality data streams for future analysis
+Creating a pipeline to injest and analyze OpenAQ historical data
+
+
+
 
 to do
 download from s3
@@ -10,10 +13,20 @@ add test units
 
 
 ## Tools
-apache spark
-apache airflow
-tableu
-clickhouse (postgresql)
+Ingestion - 
+  apache spark
+  OpenAQ S3 bucket
+Orchestration
+  apache airflow
+Transformation
+  dbt (data build tool)
+Storage
+  Clickhouse
+Quality
+  Great Expectations
+Visualization
+  tableu
+
 https://clickhouse.com/docs/getting-started/quick-start/oss
 
 ## Datasources
@@ -48,6 +61,28 @@ https://community.purpleair.com/t/about-the-purpleair-api/7145
 `sudo -u clickhouse clickhouse-server --config-file=/etc/clickhouse-server/config.xml --daemon`
 
 `clickhouse-client`
+
+
+## Bulk load
+### Setup infastructure
+- [ ] Setup Clickhouse on local server via docker
+- [ ] Setup local spark environment
+- [ ] Setup Click-house spark connector
+- [ ] setup dbt and configure with clickhouse
+### Extract and pre-process
+- [ ] read files from S3 with spark
+- [ ] define schema in spark
+- [ ] initial cleaning (define better)
+- [ ] standardize features if needed
+### Load data
+- [ ] create raw table in clickhouse using MergeTree (for time-series)
+- [ ] Insert data with spark dataframe writer
+### Transform
+- [ ] setup dbt to select from raw tables
+- [ ] setup fact/dim tables
+- [ ] test and validate data
+
+
 
 `exit`
 
